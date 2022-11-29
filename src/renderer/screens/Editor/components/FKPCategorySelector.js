@@ -16,40 +16,35 @@
  */
 
 import KeymapDB from "@api/focus/keymap/db";
-import React from "react";
-import { useTranslation } from "react-i18next";
-import Box from "@mui/material/Box";
-import KeyButton from "../components/KeyButton";
 import { SectionTitle } from "@renderer/components/SectionTitle";
+import React from "react";
+import KeyButtonList from "../components/KeyButtonList";
+import FormHelperText from "@mui/material/FormHelperText";
+
 const db = new KeymapDB();
 
-const VolumeKeys = (props) => {
-  const { t } = useTranslation();
-
-  const keys = [
-    db.lookup(18658), // mute
-    db.lookup(18665), // up
-    db.lookup(18666), // down
-  ];
-
-  const keyButtons = keys.map((button, index) => {
-    return (
-      <KeyButton
-        key={`consumer-volume-${index}`}
-        onKeyChange={props.onKeyChange}
-        keyObj={button}
-        noHint
-      />
-    );
-  });
-
+const FKPCategorySelector = (props) => {
   return (
-    <>
-      <SectionTitle>{t("editor.sidebar.consumer.volume")}</SectionTitle>
-      <Box sx={{ display: "flex", flexDirection: "column", padding: 0 }}>
-        {keyButtons}
-      </Box>
-    </>
+    <React.Fragment>
+      {props.title && <SectionTitle>{props.title}</SectionTitle>}
+
+      {props.help && (
+        <FormHelperText
+          sx={{
+            mb: 2,
+          }}
+        >
+          {props.help}
+        </FormHelperText>
+      )}
+      {props.children}
+      <KeyButtonList
+        keys={db.selectCategory(props.category)}
+        onKeyChange={props.onKeyChange}
+        showHints={false}
+      />
+    </React.Fragment>
   );
 };
-export default VolumeKeys;
+
+export { FKPCategorySelector as default };

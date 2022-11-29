@@ -17,10 +17,10 @@
 
 import KeymapDB from "@api/focus/keymap/db";
 import React from "react";
+import Box from "@mui/material/Box";
 import { useTranslation } from "react-i18next";
-import Collapsible from "../components/Collapsible";
 import KeyButton from "../components/KeyButton";
-
+import { SectionTitle } from "@renderer/components/SectionTitle";
 const db = new KeymapDB();
 
 const MediaKeys = (props) => {
@@ -45,9 +45,12 @@ const MediaKeys = (props) => {
   });
 
   return (
-    <Collapsible title={t("editor.sidebar.consumer.media")}>
-      {keyButtons}
-    </Collapsible>
+    <>
+      <SectionTitle>Music</SectionTitle>
+      <Box sx={{ display: "flex", flexDirection: "column", padding: 0 }}>
+        {keyButtons}
+      </Box>
+    </>
   );
 };
 

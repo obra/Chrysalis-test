@@ -515,6 +515,9 @@ const Editor = (props) => {
         onKeyChange={onKeyChange}
         keymap={keymap}
         currentKey={currentKey}
+        macroEditorOpen={openMacroEditor}
+        setOpenMacroEditor={maybeOpenMacroEditor}
+        macros={macros}
       />
       <SaveChangesButton
         onClick={onApply}
