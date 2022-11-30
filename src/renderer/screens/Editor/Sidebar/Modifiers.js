@@ -18,7 +18,7 @@
 import KeymapDB from "@api/focus/keymap/db";
 import { GuiLabel } from "@api/focus/keymap/db/base/gui";
 import { addModifier, removeModifier } from "@api/focus/keymap/db/modifiers";
-import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
@@ -27,7 +27,7 @@ import Tooltip from "@mui/material/Tooltip";
 import usePluginVisibility from "@renderer/hooks/usePluginVisibility";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Collapsible from "../components/Collapsible";
+import FKPCategorySelector from "../components/FKPCategorySelector";
 
 const db = new KeymapDB();
 
@@ -135,47 +135,43 @@ const KeyPicker = (props) => {
   const c = db.constants.codes;
 
   return (
-    <Collapsible
-      title={t("editor.sidebar.keypicker.mods")}
-      help={t("editor.sidebar.keypicker.modsHelp")}
-    >
-      <Box sx={{ margin: "2 0" }}>
-        <FormControl
-          component="fieldset"
-          sx={{ mt: 1 }}
-          disabled={!isStandardKey(props)}
-        >
-          <FormGroup row>
-            <FormControlLabel
-              control={makeSwitch("shift")}
-              label="Shift"
-              disabled={isMod(key, c.LEFT_SHIFT) || isDU}
-            />
-            <FormControlLabel
-              control={makeSwitch("ctrl")}
-              label="Control"
-              disabled={isMod(key, c.LEFT_CONTROL) || isDU}
-            />
-            <FormControlLabel
-              control={makeSwitch("alt")}
-              label="Alt"
-              disabled={isMod(key, c.LEFT_ALT) || isDU}
-            />
-            <FormControlLabel
-              control={makeSwitch("gui")}
-              label={GuiLabel.full}
-              disabled={isMod(key, c.LEFT_GUI) || isDU}
-            />
-            <FormControlLabel
-              control={makeSwitch("altgr")}
-              label="AltGr"
-              disabled={isMod(key, c.RIGHT_ALT) || isDU}
-            />
-          </FormGroup>
-        </FormControl>
-        {oneShot}
-      </Box>
-    </Collapsible>
+    <>
+      <Typography>{t("editor.sidebar.keypicker.modsHelp")}</Typography>
+      <FormControl
+        component="fieldset"
+        sx={{ mt: 1 }}
+        disabled={!isStandardKey(props)}
+      >
+        <FormGroup column>
+          <FormControlLabel
+            control={makeSwitch("shift")}
+            label="Shift"
+            disabled={isMod(key, c.LEFT_SHIFT) || isDU}
+          />
+          <FormControlLabel
+            control={makeSwitch("ctrl")}
+            label="Control"
+            disabled={isMod(key, c.LEFT_CONTROL) || isDU}
+          />
+          <FormControlLabel
+            control={makeSwitch("alt")}
+            label="Alt"
+            disabled={isMod(key, c.LEFT_ALT) || isDU}
+          />
+          <FormControlLabel
+            control={makeSwitch("gui")}
+            label={GuiLabel.full}
+            disabled={isMod(key, c.LEFT_GUI) || isDU}
+          />
+          <FormControlLabel
+            control={makeSwitch("altgr")}
+            label="AltGr"
+            disabled={isMod(key, c.RIGHT_ALT) || isDU}
+          />
+        </FormGroup>
+      </FormControl>
+      {oneShot}
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ import KeymapDB from "@api/focus/keymap/db";
 import usePluginVisibility from "@renderer/hooks/usePluginVisibility";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Collapsible from "../components/Collapsible";
+import FKPCategorySelector from "../components/FKPCategorySelector";
 import KeyButton from "../components/KeyButton";
 
 const db = new KeymapDB();
@@ -34,17 +34,15 @@ const OneShotKeys = (props) => {
   const c = db.constants.codes;
 
   return (
-    <React.Fragment>
-      <Collapsible
-        title={t("editor.sidebar.oneshot.title")}
-        help={t("editor.sidebar.oneshot.help")}
-      >
-        <KeyButton
-          keyObj={db.lookup(c.ONESHOT_CANCEL)}
-          onKeyChange={props.onKeyChange}
-        />
-      </Collapsible>
-    </React.Fragment>
+    <FKPCategorySelector
+      title={t("editor.sidebar.oneshot.title")}
+      help={t("editor.sidebar.oneshot.help")}
+    >
+      <KeyButton
+        keyObj={db.lookup(c.ONESHOT_CANCEL)}
+        onKeyChange={props.onKeyChange}
+      />
+    </FKPCategorySelector>
   );
 };
 
