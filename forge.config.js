@@ -1,4 +1,5 @@
 const { spawn } = require("child_process");
+const  { generateCLDRData }  = require("./tools/precompile.js");
 
 module.exports = {
   packagerConfig: {
@@ -32,7 +33,8 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
-          name: '@electron-forge/maker-dmg',
+      name: '@electron-forge/maker-dmg',
+      config: {},
     },
     {
       name: "@electron-forge/maker-zip",
@@ -73,6 +75,19 @@ module.exports = {
 
 
   ],
+   "publishers": [
+  {
+    "name": "@electron-forge/publisher-github",
+    "config": {
+      "repository": {
+        "owner": "obra",
+        "name": "chrysalis-test"
+      },
+    "draft": true
+    }
+  }
+    ],
+
   plugins: [
     {
       name: "@electron-forge/plugin-auto-unpack-natives",
@@ -101,7 +116,7 @@ module.exports = {
   ],
   hooks: {
     generateAssets: async (forgeConfig, platform, arch) => {
-      // TODO move precompile.mjs here
+        generateCLDRData();
     },
     readPackageJson: async (forgeConfig, packageJson) => {
       // only copy deps if there isn't any
