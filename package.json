@@ -102,6 +102,7 @@
     "@electron-forge/maker-zip": "^6.0.5",
     "@electron-forge/plugin-auto-unpack-natives": "^6.0.5",
     "@electron-forge/plugin-webpack": "^6.0.5",
+    "@electron-forge/publisher-github": "^6.0.5",
     "@spotxyz/universal": "",
     "app-builder-lib": "^23.0.3",
     "babel-loader": "^9.1.2",
