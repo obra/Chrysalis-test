@@ -16,7 +16,7 @@
 
 import { logger } from "@api/log";
 import { getStaticPath } from "@renderer/config";
-import TeensyLoader from "teensy-loader";
+// import TeensyLoader from "teensy-loader";
 
 import { delay, reportUpdateStatus } from "./utils";
 
