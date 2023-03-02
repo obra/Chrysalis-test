@@ -67,7 +67,7 @@
   },
   "scripts": {
     "precompile": "node tools/precompile.mjs",
-    "preinstall": "node tools/preinstall.js",
+    "xxxpreinstall": "node tools/preinstall.js",
     "start": "yarn run precompile && electron-forge start",
     "package": "electron-forge package",
     "make": "yarn run precompile && electron-forge make",
