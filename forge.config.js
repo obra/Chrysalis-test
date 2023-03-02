@@ -3,9 +3,9 @@ const { spawn } = require("child_process");
 module.exports = {
   packagerConfig: {
     asar: true,
-    darwinDarkModeSupport: 'true',
-    icon: 'build/icon',
-    name: 'Chrysalis',
+    darwinDarkModeSupport: "true",
+    icon: "build/icon",
+    name: "Chrysalis",
     extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
     osxSign: {
       'gatekeeper-assess': false,
