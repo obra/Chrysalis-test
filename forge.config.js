@@ -24,7 +24,7 @@ module.exports = {
       config: {},
     },
   ],
-    "publishers": [
+   "publishers": [
   {
     "name": "@electron-forge/publisher-github",
     "config": {
@@ -35,7 +35,7 @@ module.exports = {
     "draft": true
     }
   }
-]
+    ],
 
   plugins: [
     {
