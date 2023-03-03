@@ -55,6 +55,4 @@ jobs:
       - name: CLDR build
         run: yarn run precompile
       - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn run publish
