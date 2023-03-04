@@ -4,7 +4,7 @@ const  { generateCLDRData }  = require("./tools/precompile.js");
 module.exports = {
   packagerConfig: {
     asar: true,
-    extraResource: ["./build/launcher.sh", "static", "tools", "NEWS.md"],
+    extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
   },
   rebuildConfig: {},
   makers: [
