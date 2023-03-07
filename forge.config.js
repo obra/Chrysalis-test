@@ -5,7 +5,7 @@ module.exports = {
   packagerConfig: {
     asar: true,
     darwinDarkModeSupport: 'true',
-    icon: 'electron-app/resources/icon',
+    icon: 'build/icon',
     name: 'Chrysalis',
     extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
     osxSign: {
@@ -103,7 +103,7 @@ module.exports = {
     packageAfterPrune: async (forgeConfig, buildPath) => {
       console.log(buildPath);
       return new Promise((resolve, reject) => {
-        const npmInstall = spawn("npm", ["install","--production"], {
+        const npmInstall = spawn("npm", ["install","--omit=dev"], {
           cwd: buildPath,
           stdio: "inherit",
           shell: true,
