@@ -10,7 +10,7 @@ module.exports = {
     extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
     osxSign: {
       'gatekeeper-assess': false,
-      identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)",
+      identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)',
       entitlements: './build/entitlements.mac.inherit.plist',
 			      // optionsForFile: (filePath) => {       
 			        // Here, we keep it simple and return a single entitlements.plist file.
@@ -25,8 +25,7 @@ module.exports = {
       appleIdPassword: process.env.APPLE_PASSWORD,
       teamId: process.env.APPLE_TEAM_ID
     },
-    packageManager: 'yarn'
-
+    packageManager: 'yarn',
   },
   rebuildConfig: {},
   makers: [
