@@ -12,7 +12,7 @@ module.exports = {
         'pre-auto-entitlements': false,
       'gatekeeper-assess': false,
       identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)',
-      entitlements: './build/entitlements.mac.inherit.plist',
+      entitlements: './build/entitlements',
 			      // optionsForFile: (filePath) => {       
 			        // Here, we keep it simple and return a single entitlements.plist file.
 			        // You can use this callback to map different sets of entitlements
