@@ -9,6 +9,7 @@ module.exports = {
     name: 'Chrysalis',
     extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
     osxSign: {
+        'pre-auto-entitlements': false,
       'gatekeeper-assess': false,
       identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)',
       entitlements: './build/entitlements.mac.inherit.plist',
