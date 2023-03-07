@@ -25,11 +25,16 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
+          name: '@electron-forge/maker-dmg',
+    },
+    {
       name: "@electron-forge/maker-squirrel",
       config: {},
     },
     {
       name: "@electron-forge/maker-zip",
+      platforms: ['windows', 'linux'],
+
     },
   ],
    "publishers": [
