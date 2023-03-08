@@ -93,12 +93,14 @@ jobs:
         with:
           path: artifacts
 
-      - name: Discover the pull-request number
+      - uses: jwalton/gh-find-current-pr@v1
         id: pullnumber
-        shell: bash
-        run: echo ::set-output name=pr::$(tools/pr-number)
-
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: all
+          # This will echo "Your PR is 7", or be skipped if there is no current PR.
       - name: Prepare the artifacts for upload
+        if: success() && steps.pullnumber.outputs.number
         env:
           VERSION: pr-${{ steps.pullnumber.outputs.pr }}
         run: |
@@ -108,8 +110,9 @@ jobs:
              s3-data/Chrysalis-${VERSION}-portable.exe
 
       - name: Upload artifacts to S3
+        if: success() && steps.pullnumber.outputs.number
         env:
-          PR: ${{steps.pullnumber.outputs.pr}}
+          PR: ${{ steps.pullnumber.outputs.pr }}
         uses: hkdobrev/minio-deploy-action@v1
         with:
           endpoint: ${{ secrets.MINIO_ENDPOINT }}
