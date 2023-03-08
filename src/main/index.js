@@ -20,7 +20,7 @@ import installExtension from "electron-devtools-installer"; //  REACT_DEVELOPER_
 import windowStateKeeper from "electron-window-state";
 import * as path from "path";
 import { Environment } from "./dragons";
-// import { registerAutoUpdaterHandlers } from "./ipc_autoupdate";
+import { registerAutoUpdaterHandlers } from "./ipc_autoupdate";
 import { registerBackupHandlers } from "./ipc_backups";
 import {
   addUsbEventListeners,
