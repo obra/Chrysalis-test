@@ -8,6 +8,9 @@ module.exports = {
     icon: 'build/icon',
     name: 'Chrysalis',
     extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
+      osxUniversal: {
+          x64ArchFiles: '*'
+      },
     osxSign: {
         'pre-auto-entitlements': false,
       'gatekeeper-assess': false,
@@ -31,7 +34,8 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
-          name: '@electron-forge/maker-dmg',
+      name: '@electron-forge/maker-dmg',
+      config: {},
     },
     {
       name: "@electron-forge/maker-squirrel",
