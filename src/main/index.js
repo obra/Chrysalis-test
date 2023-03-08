@@ -20,7 +20,7 @@ import installExtension from "electron-devtools-installer"; //  REACT_DEVELOPER_
 import windowStateKeeper from "electron-window-state";
 import * as path from "path";
 import { Environment } from "./dragons";
-import { registerAutoUpdaterHandlers } from "./ipc_autoupdate";
+// import { registerAutoUpdaterHandlers } from "./ipc_autoupdate";
 import { registerBackupHandlers } from "./ipc_backups";
 import {
   addUsbEventListeners,
@@ -34,6 +34,14 @@ import { registerLoggingHandlers } from "./ipc_logging";
 import { registerNativeThemeHandlers } from "./ipc_nativetheme";
 import { registerSystemInfoHandlers } from "./ipc_system_info";
 import { buildMenu } from "./menu";
+
+// Auto-update support 
+require('update-electron-app')({
+  repo: 'obra/chrysalis-test',
+  updateInterval: '1 hour'
+})
+
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
