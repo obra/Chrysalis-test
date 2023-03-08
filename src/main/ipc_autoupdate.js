@@ -27,9 +27,6 @@ export const registerAutoUpdaterHandlers = () => {
   autoUpdater.on("error", (err) => {
     sendToRenderer("auto-update.error", err);
   });
-  autoUpdater.on("download-progress", (progressObj) => {
-    sendToRenderer("auto-update.download-progress", progressObj);
-  });
   autoUpdater.on("update-downloaded", (info) => {
     sendToRenderer("auto-update.update-downloaded", info);
   });
