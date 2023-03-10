@@ -14,8 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { app, ipcMain } from "electron";
-import { autoUpdater, CancellationToken } from "electron-updater";
+import { app, autoUpdater, ipcMain } from "electron";
 import { sendToRenderer } from "./utils";
 import pkg from "../../package.json";
 
