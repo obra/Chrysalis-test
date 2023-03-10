@@ -7,6 +7,9 @@ module.exports = {
     icon: "build/icon",
     name: "Chrysalis",
     extraResource: ["static", "NEWS.md"],
+    osxUniversal: {
+      x64ArchFiles: "*",
+    },
     osxSign: {
       'gatekeeper-assess': false,
       identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)',
