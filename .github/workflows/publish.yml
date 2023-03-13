@@ -75,7 +75,7 @@ jobs:
           mkdir out/artifacts
           find out/make/zip -name \*.zip  -exec cp {} out/artifacts \;
           find out/make -name \*.dmg -exec cp {} out/artifacts \;
-          find out/make -name \*.AppImage exec cp {} out/artifacts \;
+          find out/make -name \*.AppImage -exec cp {} out/artifacts \;
           cd out/artifacts
           node tools/generate-latest.js
 
