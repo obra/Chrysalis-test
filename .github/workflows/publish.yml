@@ -70,6 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:  yarn run publish 
       - name: Generate latest.yml upgrade files
+        shell: bash
         run: |
           find out
           mkdir out/artifacts
