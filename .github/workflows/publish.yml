@@ -77,7 +77,7 @@ jobs:
           find out/make -name \*.dmg -exec cp {} out/artifacts \;
           find out/make -name \*.AppImage -exec cp {} out/artifacts \;
           cd out/artifacts
-          node tools/generate-latest.js
+          node ../../tools/generate-latest.js
 
       - name: Upload latest.yml upgrade files
         uses: svenstaro/upload-release-action@v2
