@@ -52,7 +52,7 @@ let config = {
       // Package name.
       // name: "example-app",
       // Executable name.
-      bin: "Chrysalis", // resources/launcher.sh",
+      bin: "/usr/lib/chrysalis/resources/launcher.sh",
       // Human-friendly name of the application.
       // productName: "Example Electron Application",
       // `GenericName` in generated `.desktop` file.
