@@ -9,22 +9,23 @@ let files = [];
 if (process.platform === "darwin") {
   output_file = "latest-mac.yml";
   files = [
-    { name: `${product}-${process.platform}-universal-${package.version}.zip` },
-    { name: `${product}-${package.version}-universal.dmg` },
+     `${product}-${process.platform}-universal-${package.version}.zip` ,
+     `${product}-${package.version}-universal.dmg` ,
   ];
 } else if (process.platform === "win32") {
   output_file = "latest.yml";
   files = [
-    { name: `${product}-${process.platform}-x64-${package.version}.zip` },
+    `${product}-${process.platform}-x64-${package.version}.zip` ,
   ];
 } else if (process.platform == "linux") {
   output_file = "latest-linux.yml";
   files = [
-    { name: `${product}-${process.platform}-x64-${package.version}.AppImage` },
+    `${product}-${process.platform}-x64-${package.version}.AppImage` ,
   ];
 }
 
 const getFileSHA512 = (file) => {
+    console.log("Reading file " + file);
   const fileBuffer = fs.readFileSync(file);
   const base64 = crypto
     .createHash("sha512")
