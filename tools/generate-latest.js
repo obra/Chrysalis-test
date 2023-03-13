@@ -20,7 +20,7 @@ if (process.platform === "darwin") {
 } else if (process.platform == "linux") {
   output_file = "latest-linux.yml";
   files = [
-    `${product}-${process.platform}-x64-${package.version}.AppImage` ,
+    `${product}-${package.version}-x64.AppImage` ,
   ];
 }
 
