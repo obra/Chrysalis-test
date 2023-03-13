@@ -73,9 +73,9 @@ jobs:
         run: |
           find out
           mkdir out/artifacts
-          mv out/make/zip/*/*/*.zip out/artifacts
-          mv out/make/*.dmg out/artifacts
-          mv out/make/*.AppImage out/artifacts
+          cp out/make/zip/*/*/*.zip out/artifacts || true
+          cp out/make/*.dmg out/artifacts || true
+          cp out/make/AppImage/x64/*.AppImage out/artifacts || true
           cd out/artifacts
           node tools/generate-latest.js
 
