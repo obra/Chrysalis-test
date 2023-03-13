@@ -43,7 +43,6 @@ let config = {
     },
     {
       name: "@electron-forge/maker-zip",
-      platforms: ['windows', 'linux'],
 
     },
   ],
