@@ -68,4 +68,27 @@ jobs:
         if: matrix.os != 'macos-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run:  yarn run package
+        run:  yarn run make
+      - name: Generate latest.yml upgrade files
+        shell: bash
+        run: |
+          find out
+          mkdir out/artifacts
+          find out/make/zip -name \*.zip  -exec cp {} out/artifacts \;
+          find out/make -name \*.dmg -exec cp {} out/artifacts \;
+          find out/make -name \*.AppImage -exec cp {} out/artifacts \;
+          cd out/artifacts
+          # rename our artifacts to "-snapshot"
+          for i in ./*.* ; do mv "$i" "${i/`npm pkg get version|tr -d '\"'`/snapshot}" ; done
+          node ../../tools/generate-latest.js snapshot
+
+      - name: Upload latest.yml upgrade files
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: out/artifacts/*.{zip,dmg,AppImage,yml}
+          tag: ${{ github.ref }}
+          file_glob: true
+          prerelease: true
+          release_name: 'latest-snapshot'
+          overwrite: true
