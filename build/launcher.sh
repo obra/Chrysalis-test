@@ -13,6 +13,6 @@ else
     set -- --no-sandbox "$@"
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 
-exec "$SCRIPT_DIR/chrysalis-bin" "$@"
+exec "$SCRIPT_DIR/Chrysalis" "$@"
