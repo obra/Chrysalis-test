@@ -46,7 +46,7 @@ let config = {
 
     },
 {
-  name: "@reforged/maker-appimage",
+  name: "@Reforged/maker-appimage",
   config: {
     options: {
       // Package name.
