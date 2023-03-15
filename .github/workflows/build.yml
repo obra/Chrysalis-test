@@ -56,8 +56,9 @@ jobs:
           YARN_GPG: no
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: yarn
+      
       - name: Set snapshot version 
-        run: yarn version --no-git-tag-version --prerelease --preid=snapshot
+        run: echo "PACKAGE_VERSION=`npm pkg get version|tr -d '\"'`" >> $GITHUB_ENV
       - name: Release (macos)
         if: matrix.os == 'macos-latest'
         env:
@@ -81,15 +82,15 @@ jobs:
           find out/make -name \*.AppImage -exec cp {} out/artifacts \;
           cd out/artifacts
           # rename our artifacts to "-snapshot"
-          for i in ./*.* ; do mv "$i" "${i/`npm pkg get version|tr -d '\"'`/snapshot}" ; done
-          node ../../tools/generate-latest.js snapshot
+          # for i in ./*.* ; do mv "$i" "${i/`npm pkg get version|tr -d '\"'`/snapshot}" ; done
+          node ../../tools/generate-latest.js 
       - name: Upload latest.yml upgrade files
         uses: svenstaro/upload-release-action@v2
+        env:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: out/artifacts/*.{zip,dmg,AppImage,yml}
-          tag: ${{ github.ref }}
+          tag: ${{ env.PACKAGE_VERSION }}
           file_glob: true
           prerelease: true
-          release_name: 'latest-snapshot'
           overwrite: true
