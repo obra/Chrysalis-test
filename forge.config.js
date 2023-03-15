@@ -6,7 +6,7 @@ module.exports = {
     darwinDarkModeSupport: "true",
     icon: "build/icon",
     name: "Chrysalis",
-    extraResource: ["./build/launcher.sh", "static", "NEWS.md"],
+    extraResource: ["static", "NEWS.md"],
     osxSign: {
       'gatekeeper-assess': false,
       identity: 'Developer ID Application: Keyboard.io, Inc. (8AUZGMT2H5)',
@@ -35,6 +35,40 @@ module.exports = {
       name: "@electron-forge/maker-zip",
 
     },
+{
+  name: "@reforged/maker-appimage",
+  config: {
+    options: {
+      // Package name.
+      // name: "example-app",
+      // Executable name.
+      bin: "Chrysalis",
+      // Human-friendly name of the application.
+      // productName: "Example Electron Application",
+      // `GenericName` in generated `.desktop` file.
+      // genericName: "Example application",
+      // Path to application's icon.
+      icon: "build/icon.png",
+      // `Categories` in generated `.desktop` file.
+      categories: [ "Utility" ],
+      // Actions of generated `.desktop` file.
+      // actions: {
+      //  new_window: {
+      //    Name: "Launch in new window!",
+      //    Icon: "/path/to/new-window.png",
+      //    Exec: "example-app --new-window"
+      //  }
+      //},
+      // Desktop file to be used instead of the configuration above.
+      // desktopFile: "/path/to/example-app.desktop",
+      // Release of `AppImage/AppImageKit`, either number or "continuous".
+      // AppImageKitRelease: "continuous"
+    }
+  }
+}
+
+
+
   ],
   plugins: [
     {
