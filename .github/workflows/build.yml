@@ -86,7 +86,6 @@ jobs:
           node ../../tools/generate-latest.js 
       - name: Upload latest.yml upgrade files
         uses: svenstaro/upload-release-action@v2
-        env:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: out/artifacts/*.{zip,dmg,AppImage,yml}
